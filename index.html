@@ -15,28 +15,224 @@
   <link rel="icon" href="../favicon.svg">
   <link rel="apple-touch-icon" href="../icon.png"> -->
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  --color-dark: #000;
+  --color-light: #fff;
+  --color-gray-light: rgba(0, 0, 0, .1);
+  --container-padding: 3rem;
+  --font-stack: 'Zilla Slab', 'Times New Roman', 'Times', serif;
+
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: var(--font-stack);
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 1.65em;
+}
+
+::-moz-selection,
+::selection {
+  background: var(--color-dark);
+  color: var(--color-light);
+  text-shadow: none;
+}
+
+/* https://github.com/h5bp/html5-boilerplate/issues/440 */
+audio, canvas, iframe, img, svg, video {vertical-align: middle}
+
+textarea {resize: vertical}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* reduce font size for tablet and lower */
+@media (max-width: 960px) {
+  html {
+    font-size: 1.1rem;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.text-align-center { text-align: center; }
+.text-align-right { text-align: right; }
+
+.container {
+  padding: var(--container-padding);
+  transition: padding ease var(--animation-speed-fast);
+}
+
+.centered-content,
+article {
+  margin: 0 auto;
+  max-width: 65ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--container-padding);
+  justify-items: stretch;
+  align-items: end;
+}
+
+.grid-box--border {
+  padding: 0 1rem;
+  background-color: var(--color-gray-light);
+  border-radius: 5%;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  .grid-box--span-2 {grid-column: span 2}
+  .grid-box, .grid-box--span-3 {grid-column: span 3} /* default */
+  .grid-box--span-4 {grid-column: span 4}
+  .grid-box--span-5 {grid-column: span 5}
+  .grid-box--span-6 {grid-column: span 6}
+  .grid-box--span-7 {grid-column: span 7}
+  .grid-box--span-8 {grid-column: span 8}
+  .grid-box--span-9 {grid-column: span 9}
+}
+
+.yt-container {
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  position: relative;
+}
+.yt-embed {
+  position:  absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3 {
+  margin: 1em 0;
+  line-height: 1.35em;
+  font-weight: lighter;
+  color: var(--color-dark);
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: .85em;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+ul, ol, p {
+  line-height: 1.65em;
+  margin: 1.65em 0;
+}
+
+li {
+  margin: 1em 0;
+}
+
+img, iframe {
+  max-width: 100%;
+}
+
+a,
+button {
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  text-decoration: underline;
+  text-decoration-color: var(--color-dark);
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .25em;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+  margin: .25em .25em 0 0;
+  padding: .5em;
+  cursor: pointer;
+}
+
+a:hover,
+button:hover,
+a:focus,
+button:focus {
+  outline: .25rem solid var(--color-light);
+  text-decoration: none;
+  outline-offset: 0;
+  filter: invert(1);
+}
+
+/* leave site icon */
+.link--external::after {
+  margin-right: .35em;
+  margin-left: 3px;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  outline: 1px solid;
+  box-shadow: 3px -3px 0 0;
+  opacity: .75;
+  position: relative;
+  top: -.35em;
+  content: "";
+}
+</style>
 </head>
 <body>
-  <img src="images/vv-logo-stacked.png" alt="">
-  <h1>Vibrant Verse unites, showcases, and encourages music artists and visual artists of faith who live in Pittsburgh, PA.</h1>
-  <p>We want artists to achieve their full potential to impact Pittsburgh with the Gospel of Messiah Jesus.</p>
+  <div class="container">
+    <img src="images/vv-logo-stacked.png" alt="">
+    <h1>Vibrant Verse unites, showcases, and encourages music artists and visual artists of faith who live in Pittsburgh, PA.</h1>
+    <p>We want artists to achieve their full potential to impact Pittsburgh with the Gospel of Messiah Jesus.</p>
 
-  <h2>Connect to the artist community.</h2>
-  <p>We encourage artists in Pittsburgh to collaborate and help each other.</p>
-  
-  <h2>Foster and equip yourself.</h2>
-  <p>Artists who work with us receive feedback, coaching, and other resources and services.</p>
-  
-  <h2>Get noticed.</h2>
-  <p>We feature artists at concerts, art shows, and more.</p>
+    <div class="grid">
+      <div class="grid-box">
+        <h2>Connect to the artist community.</h2>
+        <p>We encourage artists in Pittsburgh to collaborate and help each other.</p>
+      </div>
+      
+      <div class="grid-box">
+        <h2>Foster and equip yourself.</h2>
+        <p>Artists who work with us receive feedback, coaching, and other resources and services.</p>
+      </div>
+      
+      <div class="grid-box">
+        <h2>Get noticed.</h2>
+        <p>We feature artists at concerts, art shows, and more.</p>
+      </div>
+    </div>
 
-  <hr>
+    <hr>
 
-  <h1>Are you an artist of faith in Pittsburgh?</h1>
-  <p>We want to connect with you. <a href="https://mailchi.mp/ca7fc5c6df97/steve-chab" target="_blank">Join our mailing list to get involved.</a></p>
-  
-
-
-  
+    <h1>Are you an artist of faith in Pittsburgh?</h1>
+    <p>We want to connect with you. <a href="https://mailchi.mp/ca7fc5c6df97/steve-chab" target="_blank">Join our mailing list to get involved.</a></p>
+  </div>
 </body>
 </html>
