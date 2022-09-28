@@ -26,15 +26,20 @@
 html {
   --color-dark: #000;
   --color-light: #fff;
-  --color-gray-light: rgba(0, 0, 0, .1);
-  --container-padding: 3rem;
+  --color-main: #6655ff;
+  --color-main-opaque: #6655ff77;
+  --color-accent: #dd3333;
+  --color-accent-opaque: #dd333377;
+
+  --container-padding: 2vw;
+  --container-padding--half: calc(var(--container-padding) * .5);
   --font-stack: 'Zilla Slab', 'Times New Roman', 'Times', serif;
 
   background-color: var(--color-light);
   color: var(--color-dark);
   font-family: var(--font-stack);
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   line-height: 1.65em;
 }
 
@@ -62,58 +67,48 @@ textarea {resize: vertical}
   width: 1px;
 }
 
-/* reduce font size for tablet and lower */
-@media (max-width: 960px) {
-  html {
-    font-size: 1.1rem;
-  }
-}
-
 body {
   margin: 0;
 }
 
-.text-align-center { text-align: center; }
-.text-align-right { text-align: right; }
-
 .container {
-  padding: var(--container-padding);
+  padding: var(--container-padding) calc(var(--container-padding) * 2);
   transition: padding ease var(--animation-speed-fast);
 }
 
-.centered-content,
-article {
-  margin: 0 auto;
-  max-width: 65ch;
+.logo-container {
+  height: 65vh;
+}
+
+.logo {
+  max-height: 100%;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--container-padding);
+  gap: var(--container-padding--half);
   justify-items: stretch;
-  align-items: end;
+  align-items: stretch;
 }
 
-.grid-box--border {
-  padding: 0 1rem;
-  background-color: var(--color-gray-light);
-  border-radius: 5%;
+.bg-box {
+  padding: var(--container-padding--half) var(--container-padding);
+  margin: var(--container-padding--half) 0;
+  background-color: var(--color-main-opaque);
+  border-radius: var(--container-padding);
 }
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 
-  .grid-box--span-2 {grid-column: span 2}
-  .grid-box, .grid-box--span-3 {grid-column: span 3} /* default */
+  .grid-box--span-2, .grid-box {grid-column: span 2}  /* default */
+  .grid-box--span-3 {grid-column: span 3}
   .grid-box--span-4 {grid-column: span 4}
   .grid-box--span-5 {grid-column: span 5}
   .grid-box--span-6 {grid-column: span 6}
-  .grid-box--span-7 {grid-column: span 7}
-  .grid-box--span-8 {grid-column: span 8}
-  .grid-box--span-9 {grid-column: span 9}
 }
 
 .yt-container {
@@ -130,18 +125,22 @@ article {
   height: 100%;
 }
 
+.text-align-center { text-align: center; }
+.text-align-right { text-align: right; }
+
 h1, h2, h3 {
-  margin: 1em 0;
+  margin: .5em 0;
   line-height: 1.35em;
   font-weight: lighter;
   color: var(--color-dark);
 }
 
-h1 {
+.heading--xl {
   font-size: 2em;
+  font-style: italic;
 }
 
-h2 {
+.heading--eyebrow {
   font-size: .85em;
   letter-spacing: .125em;
   text-transform: uppercase;
@@ -150,7 +149,8 @@ h2 {
 
 ul, ol, p {
   line-height: 1.65em;
-  margin: 1.65em 0;
+  margin: 1.15em 0;
+  max-width: 65ch;
 }
 
 li {
@@ -178,6 +178,14 @@ button {
   margin: .25em .25em 0 0;
   padding: .5em;
   cursor: pointer;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.65em 1em;
+    border-radius: 0.65em;
+    border: 2px solid;
+    margin: .5em;
 }
 
 a:hover,
@@ -208,31 +216,38 @@ button:focus {
 </head>
 <body>
   <div class="container">
-    <img src="images/vv-logo-stacked.png" alt="">
-    <h1>Vibrant Verse unites, showcases, and encourages music artists and visual artists of faith who live in Pittsburgh, PA.</h1>
+    <div class="logo-container">
+      <img src="images/vv-logo-stacked.png" alt="" class="logo">
+    </div>
+    <h1 class="heading--xl">Vibrant Verse unites, showcases, and encourages music artists and visual artists of faith who live in Pittsburgh, PA.</h1>
     <p>We want artists to achieve their full potential to impact Pittsburgh with the Gospel of Messiah Jesus.</p>
 
     <div class="grid">
       <div class="grid-box">
-        <h2>Connect to the artist community.</h2>
-        <p>We encourage artists in Pittsburgh to collaborate and help each other.</p>
+        <h2 class="heading--eyebrow">Meet fellow artists.</h2>
+        <p>We encourage artists in Pittsburgh to unite, collaborate, and network.</p>
       </div>
       
       <div class="grid-box">
-        <h2>Foster and equip yourself.</h2>
-        <p>Artists who work with us receive feedback, coaching, and other resources and services.</p>
+        <h2 class="heading--eyebrow">Equip yourself.</h2>
+        <p>Artists who work with us receive feedback, coaching, and other resources.</p>
       </div>
       
       <div class="grid-box">
-        <h2>Get noticed.</h2>
-        <p>We feature artists at concerts, art shows, and more.</p>
+        <h2 class="heading--eyebrow">Get noticed.</h2>
+        <p>We host and promote concerts, art shows, and self-publish music and more.</p>
       </div>
     </div>
+    
+    <div class="bg-box">
+      <h2 class="heading--xl">Are you an artist of faith in Pittsburgh?</h2>
+      <p>Artists who work with us receive feedback and coaching, production and publishing services, and a place to perform and fellowship. We feature artists at art shows and concerts. We publish creative works. We even feed artists at gatherings.</p>
+      <p>
+        <a href="" target="_blank" class="link--external button">Artist Application Form<span class="sr-only"> (opens in new window)</span></a>
+        <a href="" target="_blank" class="link--external button">Newsletter Signup<span class="sr-only"> (opens in new window)</span></a>
+      </p>
+    </div>
 
-    <hr>
-
-    <h1>Are you an artist of faith in Pittsburgh?</h1>
-    <p>We want to connect with you. <a href="https://mailchi.mp/ca7fc5c6df97/steve-chab" target="_blank">Join our mailing list to get involved.</a></p>
   </div>
 </body>
 </html>
