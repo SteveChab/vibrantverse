@@ -19,210 +19,248 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  --color-dark: #000;
-  --color-light: #fff;
-  --color-main: #6655ff;
-  --color-main-opaque: #6655ff77;
-  --color-accent: #dd3333;
-  --color-accent-opaque: #dd333377;
-
-  --container-padding: 2vw;
-  --container-padding--half: calc(var(--container-padding) * .5);
-  --font-stack: 'Zilla Slab', 'Times New Roman', 'Times', serif;
-
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  font-family: var(--font-stack);
-  font-weight: 300;
-  font-size: 1.35rem;
-  line-height: 1.65em;
-}
-
-::-moz-selection,
-::selection {
-  background: var(--color-dark);
-  color: var(--color-light);
-  text-shadow: none;
-}
-
-/* https://github.com/h5bp/html5-boilerplate/issues/440 */
-audio, canvas, iframe, img, svg, video {vertical-align: middle}
-
-textarea {resize: vertical}
-
-.sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-body {
-  margin: 0;
-}
-
-.container {
-  padding: var(--container-padding) calc(var(--container-padding) * 2);
-  transition: padding ease var(--animation-speed-fast);
-}
-
-.logo-container {
-  height: 65vh;
-}
-
-.logo {
-  max-height: 100%;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--container-padding--half);
-  justify-items: stretch;
-  align-items: stretch;
-}
-
-.bg-box {
-  padding: var(--container-padding--half) var(--container-padding);
-  margin: var(--container-padding--half) 0;
-  background-color: var(--color-main-opaque);
-  border-radius: var(--container-padding);
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(6, 1fr);
+  * {
+    box-sizing: border-box;
   }
 
-  .grid-box--span-2, .grid-box {grid-column: span 2}  /* default */
-  .grid-box--span-3 {grid-column: span 3}
-  .grid-box--span-4 {grid-column: span 4}
-  .grid-box--span-5 {grid-column: span 5}
-  .grid-box--span-6 {grid-column: span 6}
-}
+  html {
+    --color-dark: #000;
+    --color-light: #fff;
+    --color-main: #6655ff;
+    --color-main-opaque: #6655ff55;
+    --color-accent: #dd3333;
+    --color-accent-opaque: #dd333355;
 
-.yt-container {
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-  position: relative;
-}
-.yt-embed {
-  position:  absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}
+    --container-padding: 7vw;
+    --container-padding--half: calc(var(--container-padding) * .5);
+    --font-stack: 'Zilla Slab', 'Times New Roman', 'Times', serif;
+    --border: solid var(--color-main-opaque) 3px;
 
-.text-align-center { text-align: center; }
-.text-align-right { text-align: right; }
+    --logo-height: 65vh;
+    --button-margin: 0 .5em 0 0;
 
-h1, h2, h3 {
-  margin: .5em 0;
-  line-height: 1.35em;
-  font-weight: lighter;
-  color: var(--color-dark);
-}
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    font-family: var(--font-stack);
+    font-weight: 300;
+    font-size: 1.35rem;
+    line-height: 1.65em;
+  }
 
-.heading--xl {
-  font-size: 2em;
-  font-style: italic;
-}
+  /* tablet and lower */
+  @media (max-width: 960px) {
+    html {
+      --logo-height: auto;
+      --button-margin: .5em .5em 0 0;
+    }
+  }
 
-.heading--eyebrow {
-  font-size: .85em;
-  letter-spacing: .125em;
-  text-transform: uppercase;
-  font-weight: bold;
-}
+  ::-moz-selection,
+  ::selection {
+    background: var(--color-dark);
+    color: var(--color-light);
+    text-shadow: none;
+  }
 
-ul, ol, p {
-  line-height: 1.65em;
-  margin: 1.15em 0;
-  max-width: 65ch;
-}
+  /* https://github.com/h5bp/html5-boilerplate/issues/440 */
+  audio, canvas, iframe, img, svg, video {vertical-align: middle}
 
-li {
-  margin: 1em 0;
-}
+  textarea {resize: vertical}
 
-img, iframe {
-  max-width: 100%;
-}
+  .sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 
-a,
-button {
-  color: var(--color-dark);
-  background-color: var(--color-light);
-  text-decoration: underline;
-  text-decoration-color: var(--color-dark);
-  text-decoration-skip-ink: none;
-  text-decoration-thickness: 2px;
-  text-underline-offset: .25em;
-}
+  body {
+    margin: 0;
+  }
 
-button {
-  border: none;
-  border-radius: 0;
-  margin: .25em .25em 0 0;
-  padding: .5em;
-  cursor: pointer;
-}
+  header, article {
+    padding:  var(--container-padding--half) var(--container-padding) 0;
+    transition: padding ease var(--animation-speed-fast);
+  }
 
-.button {
+  .logo {
+    height: var(--logo-height);
+  }
+
+  article + article {
+    border-top: var(--border);
+  }
+
+  .bg-box + article {
+    border-top: none;
+  }
+
+  .bg-box {
+    padding-bottom: var(--container-padding--half);
+    margin: 0 var(--container-padding--half);
+    background-color: var(--color-main-opaque);
+    border-radius: var(--container-padding);
+    border-top: none;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: var(--container-padding--half);
+    column-gap: var(--container-padding);
+    justify-items: stretch;
+    align-items: stretch;
+    margin: var(--container-padding--half) 0;
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .grid-box--span-2, .grid-box {grid-column: span 2}  /* default */
+    .grid-box--span-3 {grid-column: span 3}
+    .grid-box--span-4 {grid-column: span 4}
+    .grid-box--span-5 {grid-column: span 5}
+    .grid-box--span-6 {grid-column: span 6}
+  }
+
+  .yt-container {
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    position: relative;
+  }
+  .yt-embed {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .text-align-center { text-align: center; }
+  .text-align-right { text-align: right; }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: .5em 0;
+    line-height: 1.35em;
+    font-weight: lighter;
+    color: var(--color-dark);
+  }
+
+  .heading--xl {
+    font-size: 2em;
+    font-style: italic;
+  }
+
+  .heading--eyebrow {
+    font-size: .85em;
+    letter-spacing: .125em;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  ul, ol, p {
+    line-height: 1.65em;
+    margin: 1.15em 0;
+    max-width: 65ch;
+  }
+
+  li {
+    margin: 1em 0;
+  }
+
+  img, iframe {
+    max-width: 100%;
+  }
+
+  a,
+  button {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    text-decoration: underline;
+    text-decoration-color: var(--color-dark);
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 2px;
+    text-underline-offset: .25em;
+  }
+
+  button {
+    border: none;
+    border-radius: 0;
+    margin: .25em .25em 0 0;
+    padding: .5em;
+    cursor: pointer;
+  }
+
+  .button {
+      display: inline-block;
+      padding: 0.65em 1em;
+      border-radius: 0.65em;
+      border: 2px solid;
+      margin: var(--button-margin);
+  }
+
+  a:hover,
+  button:hover,
+  a:focus,
+  button:focus {
+    outline: .25rem solid var(--color-light);
+    text-decoration: none;
+    outline-offset: 0;
+    filter: invert(1);
+  }
+
+  address,
+  blockquote {
+    margin-left: 2em;
+    padding-left: 1em;
+    border-left: var(--border);
+  }
+
+  address, q {
+    font-style: italic;
+  }
+
+  strong, b {
+    letter-spacing: .025em;
+    font-weight: normal;
+    background-color: var(--color-main-opaque);
+  }
+
+  /* leave site icon */
+  .link--external::after {
+    margin-right: .35em;
+    margin-left: 3px;
     display: inline-block;
-    padding: 0.65em 1em;
-    border-radius: 0.65em;
-    border: 2px solid;
-    margin: .5em;
-}
-
-a:hover,
-button:hover,
-a:focus,
-button:focus {
-  outline: .25rem solid var(--color-light);
-  text-decoration: none;
-  outline-offset: 0;
-  filter: invert(1);
-}
-
-/* leave site icon */
-.link--external::after {
-  margin-right: .35em;
-  margin-left: 3px;
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  outline: 1px solid;
-  box-shadow: 3px -3px 0 0;
-  opacity: .75;
-  position: relative;
-  top: -.35em;
-  content: "";
-}
+    width: 6px;
+    height: 6px;
+    outline: 1px solid;
+    box-shadow: 3px -3px 0 0;
+    opacity: .75;
+    position: relative;
+    top: -.35em;
+    content: "";
+  }
 </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo-container">
+    
+    <header>
       <img src="images/vv-logo-stacked.png" alt="" class="logo">
-    </div>
-    <h1 class="heading--xl">Vibrant Verse unites, showcases, and encourages music artists and visual artists of faith who live in Pittsburgh, PA.</h1>
-    <p>We want artists to achieve their full potential to impact Pittsburgh with the Gospel of Messiah Jesus.</p>
 
-    <div class="grid">
+      <h1 class="heading--xl">Vibrant Verse unites, showcases, and encourages music artists and visual artists of faith who live in Pittsburgh, PA.</h1>
+      <p>We want artists to achieve their full potential to impact Pittsburgh with the Gospel of Messiah Jesus.</p>
+    </header>
+
+    <article class="grid">
       <div class="grid-box">
         <h2 class="heading--eyebrow">Meet fellow artists.</h2>
         <p>We encourage artists in Pittsburgh to unite, collaborate, and network.</p>
@@ -237,17 +275,101 @@ button:focus {
         <h2 class="heading--eyebrow">Get noticed.</h2>
         <p>We host and promote concerts, art shows, and self-publish music and more.</p>
       </div>
-    </div>
+    </article>
     
-    <div class="bg-box">
+    <article class="bg-box">
       <h2 class="heading--xl">Are you an artist of faith in Pittsburgh?</h2>
       <p>Artists who work with us receive feedback and coaching, production and publishing services, and a place to perform and fellowship. We feature artists at art shows and concerts. We publish creative works. We even feed artists at gatherings.</p>
       <p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe5vbZZOckmL5XfnFNq6vGzapA-dyb4d97eclhystHfIkWwuQ/viewform" target="_blank" class="link--external button">Artist Application Form<span class="sr-only"> (opens in new window)</span></a>
         <a href="http://eepurl.com/g0LBrb" target="_blank" class="link--external button">Newsletter Signup<span class="sr-only"> (opens in new window)</span></a>
       </p>
-    </div>
+    </article>
 
+    <article class="grid">
+      <div class="grid-box grid-box--span-6">
+        <h2 class="heading--xl">Are you a local art, music, or poetry enthusiast?</h2>
+      </div>
+      <div class="grid-box">
+        <h3 class="heading--eyebrow">Newsletter</h3>
+        <p>Discover the latest happenings with local artists and events.</p>
+        <p><a href="http://eepurl.com/g0LBrb" target="_blank" class="link--external">Newsletter Signup<span class="sr-only"> (opens in new window)</span></a></p>
+      </div>
+      <div class="grid-box">
+        <h3 class="heading--eyebrow">Donate</h3>
+        <p>Help us help artists. We labor over Vibrant Verse with love.</p>
+        <p><a href="#donate">Donate</a></p>
+      </div>
+      <!-- <div class="grid-box">
+        <h3 class="heading--eyebrow">Volunteer</h3>
+        <p>Help coordinate events, find artists, and renovate our space.</p>
+        <p><a href="#" target="_blank" class="link--external">Volunteer<span class="sr-only"> (opens in new window)</span></a></p>
+      </div> -->
+    </article>
+
+    <article class="grid">
+      <div class="grid-box grid-box--span-6">
+        <h2 class="heading--xl" id="donate">Donate</h2>
+        <p>Artists who work with us receive feedback and coaching, production and publishing services, and a place to perform and fellowship. We feature artists at art shows and concerts. We publish creative works. We even feed artists at gatherings.</p>
+        <p>To support Vibrant Verse:</p>
+      </div>
+      <!-- <div class="grid-box grid-box--span-3">
+        <h3 class="heading--eyebrow">Donate Online</h3>
+        <p>Send money via PayPal to donate@vibrantverse.org.</p>
+      </div> -->
+      <div class="grid-box grid-box--span-3">
+        <h3 class="heading--eyebrow">Send a Check</h3>
+        <p>Write a check to "Manifest Ministries," <strong>put "Vibrant Verse" in the memo</strong>, then mail it to:</p>
+            <address>
+              Manifest Ministries<br>
+              5604 Interboro Ave<br>
+              Pittsburgh, PA 15207
+            </address>
+        <p>All donations via check are tax deductible.</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 class="heading--xl" id="about">About</h2>
+      <p><em>Vibrant</em> as in colorful and lively. <em>Verse</em> as in scripture, song, and poetry.</p>
+
+      <h3 class="heading--eyebrow">History</h3>
+      <blockquote>
+        <q>The mind of man plans his way, But יהוה directs his steps.</q><br>
+        Proverbs 16:9
+      </blockquote>
+      <p>Steve Chab here. When I became a student of Messiah, I noticed that <strong>modern music made by Jesus-followers lacked quality and creativity</strong> in lyricism, musicality, and production.</p>
+      <p>I wondered, <q>If God, the Author of Creation, gave artists the ability to create, then how can the music of a God-lover lack creativity?</q></p>
+      <p>After years of frustration, I decided to do something about it.</p>
+      <p>I partnered with the Swartz Center for Entrepreneurship (Project Olympus) at Carnegie Mellon University (CMU) and Business of Music professor, Lance LaDuke. Under their guidance, I researched local and national artists and arts organizations. My wife, Elissa, and I <strong>conducted nearly 40 interviews</strong>.</p>
+      <p>What blocks artists from creating quality art?</p>
+      <p>Most churches don't foster artists, cultivate creativity, or host concerts. Many artists find that <strong>the Church doesn't understand the important role that art plays in society</strong>. One respondent said, <q>Look to see who has more weight on society &mdash; the pastor or the artist? It's always the artist!</q></p>
+      <p>We learned that artists of faith in Pittsburgh need:</p>
+      <ul>
+        <li>Community</li>
+        <li>Performance spaces</li>
+        <li>Professionalism</li>
+      </ul>
+      <p>In 2021, we founded Vibrant Verse to unite, train, and showcase local artists of faith.</p>
+    </article>
+
+    <article class="grid">
+      <div class="grid-box grid-box--span-6">
+        <h3 class="heading--xl" id="leadership">Leadership</h3>
+      </div>
+      <div class="grid-box grid-box--span-3">
+        <h4 class="heading--eyebrow">Founders</h4>
+        [Picture of Steve & Elissa]
+        <p>Steve and Elissa married in 2013. They love Messiah Jesus and live with lots of children and one red Pit bull. Elissa teaches group painting classes and creates beautiful, handcrafted cards. Steve creates music, art, and code and fronts Steve Chab Band.</p>
+      </div>
+      <div class="grid-box grid-box--span-3">
+        <h4 class="heading--eyebrow">The Board</h3>
+        <blockquote>
+          <q>Without consultation, plans are frustrated, but with many counselors they succeed.</q><br>
+          Proverbs 15:22
+        </blockquote>
+        <p>Vibrant Verse is a part of Manifest Ministries, whose board is composed of Rev. W. Joseph Stump, Judy Stump, Denise Parker, Kevin Cochrane, and Steve Chabassol.</p>
+      </div>
   </div>
 </body>
 </html>
